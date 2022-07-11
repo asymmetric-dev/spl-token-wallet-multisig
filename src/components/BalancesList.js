@@ -407,16 +407,18 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
         }
         // A Serum market exists. Fetch the price.
         else if (serumMarkets[coin]) {
-          let m = serumMarkets[coin];
-          priceStore
-            .getPrice(connection, m.name)
-            .then((price) => {
-              setPrice(price);
-            })
-            .catch((err) => {
-              console.error(err);
-              setPrice(null);
-            });
+          // TODO: getPrice is using a deprecated bonfida API. This could be replaced with the coingecko API.
+          // let m = serumMarkets[coin];
+          // priceStore
+          //   .getPrice(connection, m.name)
+          //   .then((price) => {
+          //     setPrice(price);
+          //   })
+          //   .catch((err) => {
+          //     console.error(err);
+          //     setPrice(null);
+          //   });
+          setPrice(null); // Set price as null for now.
         }
         // No Serum market exists.
         else {
